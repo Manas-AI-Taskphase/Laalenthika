@@ -8,7 +8,7 @@ using namespace std;
 
 struct Node {
     int x, y;
-    double g, h; // g: cost from start, h: heuristic cost to goal
+    double g, h; 
     Node* parent;
 
     Node(int x, int y, double g, double h, Node* parent) : x(x), y(y), g(g), h(h), parent(parent) {}
@@ -20,7 +20,7 @@ struct Node {
 
 struct CompareNodes {
     bool operator()(const Node* lhs, const Node* rhs) const {
-        return lhs->f() > rhs->f(); // smaller f() value has higher priority
+        return lhs->f() > rhs->f(); 
     }
 };
 
@@ -119,16 +119,13 @@ public:
         int height = msg->info.height;
         vector<vector<int>> vec(height, vector<int> (width));
 
-    // Iterate through the data array
+   
         for (int i = 0; i < height; ++i) {
                 for (int j = 0; j < width; ++j) {
-                    // Access occupancy probability value of cell (i, j)
+                    
                          int index = i * width + j;
                          int occupancy = msg->data[index];
 
-                         // Do something with the occupancy value
-                         // For example, print the occupancy value of each cell
-                        // ROS_INFO("Cell (%d, %d): Occupancy = %d", j, i, occupancy);
                         if (occupancy != 0){
                                  vec[i][j] = 1;
                         }
